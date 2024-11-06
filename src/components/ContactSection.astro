@@ -1,0 +1,59 @@
+---
+
+---
+<section>
+    <img src="bg-cole.jfif" class="w-full h-screen brightness-50">
+    <div class="w-[450px] h-[350px] absolute flex ml-[1230px] mt-[180px] justify-center items-center text-center inset-0 rounded-xl">
+        <img src="logo-white.png">
+    </div>
+    <div class="w-[600px] h-[150px] absolute flex ml-[1120px] mt-[550px] justify-center items-center text-center inset-0 rounded-xl ">
+        <p class="font-semibold uppercase text-white justify-center text-center items-center text-6xl">Haznos saber tus inquietudes</p>
+    </div>
+    <div class="w-[850px] h-[630px] absolute flex ml-[140px] my-auto justify-center items-center text-center inset-0 fondoTransparente rounded-xl ">
+        <form class="absolute flex flex-col justify-center items-center text-center w-[850px] h-[550px] text-white gap-3 text-lg uppercase">
+
+            <legend class="uppercase font-bold text-3xl mb-[10px]">Contactate con nosotros</legend>
+
+            <label for="name" class="font-medium">Nombre</label>
+            <input id="name" type="text" name="nombre" class="border border-black rounded-lg ml-2 w-[600px] h-[130px] text-center text-black efectoSombreado">
+
+            <label for="email" class="font-medium">Correo Electrónico</label>
+            <input id="email" type="email" name="correo" class="border border-black rounded-lg ml-2 w-[600px] h-[130px] text-center text-black efectoSombreado">
+
+            <label for="phonenumber" class="font-medium">Teléfono</label>
+            <input id="phonenumber" type="tel" name="telefono" class="border border-black rounded-lg ml-2 w-[600px] h-[130px] text-center text-black efectoSombreado">
+
+            <label for="team" class="font-medium">Su equipo</label>
+            <input id="team" type="text" name="equipo" class="border border-black rounded-lg ml-2 w-[600px] h-[130px] text-center text-black efectoSombreado">
+
+            <label for="affair" class="font-medium">Asunto</label>
+            <textarea id="affair" name="asunto" class="border border-black rounded-lg ml-2 w-[600px] h-[130px] text-center text-black efectoSombreado" cols="20" rows="30" />
+
+            <div class="mt-[20px] w-[120px] h-[120px]">
+                <button type="submit" class="font-semibold bg-orange-600 rounded-lg px-6  text-white w-full h-full animacionBorde">Enviar</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<style>
+    .fondoTransparente {
+        background: rgba(17, 17, 17, 0.6);
+    }
+
+    .efectoSombreado {
+        transition: box-shadow 0.2s ease;
+    }
+
+    .efectoSombreado:focus {
+        box-shadow: 0px 0px 10px rgb(206, 71, 8);
+    }
+
+    .animacionBorde {
+        transition: border-radius 0.5s ease;
+    }
+
+    .animacionBorde:hover {
+        border-radius: 25px;
+    }
+</style>
