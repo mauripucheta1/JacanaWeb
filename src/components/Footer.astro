@@ -1,23 +1,20 @@
 <footer class="w-full h-auto bg-gray-200 py-10">
 
-    <div class="w-full max-w-screen-xl mx-auto flex flex-wrap justify-start items-start">
+    <div class="w-full max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 md:gap-12 px-4 contenedor">
 
-        <!-- Sección 1: Empresa -->
-        <div class="w-1/5 flex flex-col min-h-[200px] text-center gap-1">
+        <div class="flex flex-col justify-start items-center text-center sm:text-center gap-1 min-h-[220px]-md space-y-2">
             <p class="font-bold uppercase text-2xl">Jacana</p>
             <p class="text-lg">Empresa dedicada a la elaboración de indumentaria deportiva.</p>
         </div>
 
-        <!-- Sección 2: Contacto -->
-        <div class="w-1/5 flex flex-col min-h-[200px] text-center gap-1">
+        <div class="flex flex-col justify-start items-center text-center sm:text-center gap-1 min-h-[220px]-md space-y-2">
             <p class="font-bold uppercase text-2xl">Contacto</p>
             <p class="text-lg">Gral. Cabrera 256 / Jesús María - Córdoba (Argentina)</p>
             <a class="font-bold uppercase text-sm" href="https://api.whatsapp.com/send?phone=5493525437109" target="_blank">Contactanos</a>
             <p class="text-lg">Info@VestimosAtletas.com</p>
         </div>
 
-        <!-- Sección 3: Horarios -->
-        <div class="w-1/5 flex flex-col min-h-[200px] text-center gap-1">
+        <div class="flex flex-col justify-start items-center text-center sm:text-center gap-1 min-h-[220px]-md space-y-2">
             <p class="font-bold uppercase text-2xl">Horarios de Atención</p>
             <p class="text-lg">Lunes a viernes</p>
             <p class="text-lg">08:00 - 14:00</p>
@@ -26,8 +23,7 @@
             </a>
         </div>
 
-        <!-- Sección 4: Información -->
-        <div class="w-1/5 flex flex-col min-h-[200px] text-center gap-1">
+        <div class="flex flex-col justify-start items-center text-center sm:text-center gap-1 min-h-[220px]-md space-y-2">
             <p class="font-bold uppercase text-2xl">Información</p>
             <a href="/Condition" class="font-semibold">Términos y condiciones</a>
             <a href="/Shipping" class="font-semibold">Envíos y devoluciones</a>
@@ -35,14 +31,29 @@
             <a href="/Use" class="font-semibold">Recomendaciones de uso</a>
         </div>
 
-        <!-- Sección 5: Novedades -->
-        <div class="w-1/5 flex flex-col min-h-[200px] text-center gap-1">
+        <div class="flex flex-col justify-start items-center text-center sm:text-center gap-1 min-h-[220px]-md space-y-2">
             <p class="font-bold uppercase text-2xl">Novedades</p>
             <p class="text-lg">Suscríbete para recibir información sobre eventos, productos y atletas.</p>
-            <input type="text" class="border-orange-500 border-2 mt-2 px-3 py-2 rounded-xl w-full" placeholder="Email">
-            <button type="submit" class="font-semibold h-10 w-24 border border-gray-400 rounded-lg mt-2 bg-gray-200 hover:bg-gray-300 m-auto">Registrar</button>
+            <input type="text" class="border-orange-500 border-2 mt-2 px-3 py-2 rounded-xl w-full max-w-xs" placeholder="Email">
+            <button type="submit" class="font-semibold h-10 w-24 border border-gray-400 rounded-lg mt-2 bg-gray-200 hover:bg-gray-300">Registrar</button>
         </div>
 
     </div>
 
 </footer>
+
+<style>
+
+    .contenedor {
+        display: flex;
+        flex-direction: row; 
+    }
+
+    @media (max-width: 1100px) {
+        .contenedor {
+            flex-direction: column;
+            gap: 2;
+        }
+    }
+
+</style>
