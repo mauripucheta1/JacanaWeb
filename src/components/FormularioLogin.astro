@@ -1,0 +1,120 @@
+---
+
+---
+<section class="flex justify-center items-center min-h-screen bg-cover bg-center" style="background-image: url('public/img/Prenda-4.jpeg');">
+
+  <div class="absolute inset-0 bg-black bg-opacity-35 z-10"></div>
+
+    <form id="loginForm" class="bg-white p-6 rounded-lg shadow-md w-full max-w-sm z-20">
+
+      <div class="flex justify-center mb-4">
+        <img src="public/img/jacana-bg.png" alt="Logo Jacana" class="h-20 w-24">
+      </div>
+
+      <h2 class="text-2xl font-bold text-center mb-4">Iniciar sesión</h2>
+  
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="w-full mt-1 p-2 border border-gray-300 rounded-md"
+          placeholder="usuario@ejemplo.com"
+          required
+        />
+      </div>
+  
+      <div class="mb-6">
+        <label for="contraseña" class="block text-sm font-medium text-gray-700">Contraseña</label>
+        <input
+          type="password"
+          id="contraseña"
+          name="contraseña"
+          class="w-full mt-1 p-2 border border-gray-300 rounded-md"
+          placeholder="********"
+          required
+        />
+      </div>
+  
+      <button type="submit" class="bg-[#F97316] text-white w-full py-2 px-4 rounded-lg hover:bg-[#cf7332] ease-in transition-all duration-300">Ingresar</button>
+
+    </form>
+
+</section>
+  
+<script>
+
+    import Swal from 'sweetalert2';
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const loginForm = document.getElementById("loginForm");
+
+        loginForm?.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const email = (document.getElementById("email") as HTMLInputElement).value;
+            const password = (document.getElementById("contraseña") as HTMLInputElement).value;
+
+            if (!email || !password) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Campos vacíos',
+                    text: 'Por favor, completa todos los campos.',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Entendido',
+                });
+                return;
+            }
+
+            try {
+                const response = await fetch("http://localhost:3000/auth/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    sessionStorage.setItem("token", data.token);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login exitoso',
+                        text: 'Redirigiendo al panel de administración...',
+                        timer: 1500,
+                        showConfirmButton: false,
+                    });
+                    setTimeout(() => {
+                        window.location.href = "/AdminPanel";
+                    }, 1500);
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error de autenticación',
+                        text: 'Correo o contraseña incorrectos.',
+                        confirmButtonColor: '#d33',
+                        confirmButtonText: 'Intentar nuevamente',
+                    });
+                }
+            } catch (error) {
+                console.error("Error al intentar iniciar sesión:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error de servidor',
+                    text: 'Hubo un problema al conectar con el servidor. Intenta más tarde.',
+                    confirmButtonColor: '#d33',
+                });
+            }
+        });
+    });
+    
+    document.getElementById("logoutButton")?.addEventListener("click", () => {
+        logout();
+    });
+
+    const logout = () => {
+      sessionStorage.removeItem("token"); 
+      window.location.href = "/login"; 
+    };
+
+</script>
