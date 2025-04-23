@@ -1,0 +1,452 @@
+---
+
+---
+<section class="panel-section min-h-screen bg-gray-300 p-6 flex flex-col justify-center items-center gap-10">
+
+    <div class="w-full h-auto flex flex-col md:flex-row justify-center text-center items-center gap-4">
+        <button id="cerrarSesion" class="bg-red-600 text-white p-3 rounded-xl font-semibold hover:bg-red-700 transition-all ease-in duration-150">Cerrar Sesión</button>
+    </div>
+
+    <main class="w-full max-w-4xl">
+
+        <div class="bg-white p-4 rounded-lg shadow-md flex flex-col">
+
+            <div class="w-full h-auto">
+                <h2 class="text-2xl font-bold mb-4">Registros de Clientes | Administración</h2>
+            </div>
+            
+            <div class="w-full h-auto flex flex-col md:flex-row justify-center items-center mb-4 gap-4">
+                <input id="inputDeFiltro" type="text" class="border border-gray-300 rounded-lg p-2 focus:outline-none" placeholder="Buscar ID o Correo..." autocomplete="off">
+                <button id="enviarMensajesTodos" class="bg-gray-500 text-white p-2 rounded-xl font-semibold hover:bg-gray-600 transition-all ease-in duration-150">Enviar mensaje a todos</button>
+                <button id="eliminarTodos" class="bg-red-600 text-white p-2 rounded-xl font-semibold hover:bg-red-700 transition-all ease-in duration-150">Eliminar registros</button>
+                <p id="PContador" class="font-semibold">Total clientes: </p>
+            </div>
+            
+            <!-- Modal para actualizar un correo -->
+
+            <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+                <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+                    <h2 class="text-xl font-bold mb-4">Actualizar Correo</h2>
+                    <input type="email" id="editEmailInput" class="border border-gray-300 rounded-lg p-2 w-full mb-4 focus:outline-none" placeholder="Nuevo correo">    
+                    <button id="saveChangesButton" class="bg-gray-500 text-white p-2 rounded-lg hover:bg-gray-600 transition-all ease-in duration-150">Guardar cambios</button>
+                    <button id="cancelButton" class="bg-red-600 text-white p-2 rounded-lg hover:bg-red-700 transition-all ease-in duration-150 mt-2">Cancelar</button>
+                </div>
+            </div>
+
+            <table class="table-auto w-full border-collapse border border-gray-200 text-center justify-center items-center">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="border border-gray-300 px-4 py-2">ID</th>
+                        <th class="border border-gray-300 px-4 py-2">Correo</th>
+                        <th class="border border-gray-300 px-4 py-2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- Acá va el contenido dinámico que se inserta desde la BD -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+</section>
+
+<script>
+
+    import Swal from "sweetalert2";
+
+    declare global {
+        interface Window {
+            confirmDelete: (id: number) => void;
+        }
+        interface Window {
+            openModalEdit: (id: number) => void;
+        }
+    }
+
+    document.getElementById("cerrarSesion").addEventListener("click", () => {
+        sessionStorage.removeItem("token"); 
+        window.location.href = "/Login";
+    });
+
+    document.addEventListener('DOMContentLoaded', async () => {
+
+        const tableBody = document.querySelector('tbody'); 
+        const paginationContainer = document.createElement('div'); 
+        paginationContainer.className = 'flex justify-center gap-2 mt-4'; 
+        document.querySelector('.bg-white').insertBefore(paginationContainer, document.querySelector('table'));
+
+        const rowsPerPage = 6;
+        let currentPage = 1; 
+
+        try {
+            const token = sessionStorage.getItem('token'); 
+            const response = await fetch('http://localhost:3000/clientes', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+
+            if (response.ok) {
+                const clientes = await response.json();
+
+                const totalPages = Math.ceil(clientes.length / rowsPerPage); 
+
+                const renderTable = (page) => {
+                    tableBody.innerHTML = ''; 
+                    const startIndex = (page - 1) * rowsPerPage;
+                    const endIndex = Math.min(startIndex + rowsPerPage, clientes.length); 
+
+                    for (let i = startIndex; i < endIndex; i++) {
+                        const cliente = clientes[i];
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td class="border border-gray-300 px-4 py-2">${cliente.id}</td>
+                            <td class="border border-gray-300 px-4 py-2">${cliente.email}</td>
+                            <td class="border border-gray-300 px-4 py-2 flex justify-center gap-2">
+                                <a href="mailto:${cliente.email}" class="p-2 rounded hover:bg-gray-200 transition-all ease-in duration-150" title="Contactar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4"></path>
+                                    </svg>
+                                </a>
+                                <button class="p-2 rounded hover:bg-gray-200 transition-all ease-in duration-150" onclick="openModalEdit(${cliente.id})" title="Actualizar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232a3 3 0 114.24 4.24L7 21H3v-4L15.232 5.232z" />
+                                    </svg>
+                                </button>
+                                <button class="p-2 rounded hover:bg-gray-200 transition-all ease-in duration-150" onclick="confirmDelete(${cliente.id})" title="Eliminar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v2m3 0h.01" />
+                                    </svg>
+                                </button>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    }
+                };
+
+                const renderPaginationButtons = () => {
+                    paginationContainer.innerHTML = ''; 
+                    for (let i = 1; i <= totalPages; i++) {
+                        const button = document.createElement('button') as HTMLButtonElement;
+                        button.textContent = i.toString();
+                        button.className = `p-2 border rounded mb-4 ${i === currentPage ? 'bg-black text-white' : 'bg-gray-200 text-black hover:bg-gray-300 transition-all ease-in duration-150'}`;
+                        button.addEventListener('click', () => {
+                            currentPage = i; 
+                            renderTable(currentPage); 
+                            renderPaginationButtons(); 
+                        });
+                        paginationContainer.appendChild(button);
+                    }
+                };
+
+                renderTable(currentPage);
+                renderPaginationButtons();
+
+            } else {
+                console.error('Error al obtener clientes:', response.status);
+            }
+        } catch (error) {
+            console.error('Error al conectar con el servidor:', error);
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const inputDeFiltro = document.getElementById('inputDeFiltro') as HTMLInputElement; 
+        const tableBody = document.querySelector('tbody'); 
+
+        inputDeFiltro.addEventListener('input', () => {
+
+            const filterValue = inputDeFiltro.value.toLowerCase();
+            const rows = tableBody.querySelectorAll('tr'); 
+            let hasResults = false; 
+
+            rows.forEach(row => {
+                const idCell = row.querySelector('td:nth-child(1)'); 
+                const emailCell = row.querySelector('td:nth-child(2)'); 
+
+                const idText = idCell?.textContent.toLowerCase() || ''; 
+                const emailText = emailCell?.textContent.toLowerCase() || '';
+
+                if (idText.includes(filterValue) || emailText.includes(filterValue)) {
+                    row.style.display = ''; 
+                    hasResults = true; 
+                } else {
+                    row.style.display = 'none'; 
+                }
+            });
+
+            const sinResultados= document.getElementById('sinResultados'); 
+            if (!hasResults) {
+                if (!sinResultados) {
+                    const emptyRow = document.createElement('tr');
+                    emptyRow.id = 'sinResultados';
+                    emptyRow.innerHTML = `
+                        <td colspan="3" class="border border-gray-300 px-4 py-2 text-center text-gray-500">
+                            No hay resultados coincidentes
+                        </td>
+                    `;
+                    tableBody.appendChild(emptyRow);
+                }
+            } else {
+                if (sinResultados) {
+                    tableBody.removeChild(sinResultados);
+                }
+            }
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const eliminarTodosButton = document.getElementById('eliminarTodos'); 
+
+        eliminarTodosButton.addEventListener('click', async () => {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'Esta acción eliminará todos los registros de la base de datos. No se puede deshacer.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar',
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    try {
+                        const token = sessionStorage.getItem('token'); 
+                        const response = await fetch('http://localhost:3000/clientes', {
+                            method: 'DELETE',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`,
+                            },
+                        });
+
+                        if (response.ok) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Registros eliminados',
+                                text: 'Todos los registros han sido eliminados correctamente.',
+                                confirmButtonColor: '#28a745',
+                            });
+                            const tableBody = document.querySelector('tbody');  
+                            tableBody.innerHTML = '';
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error al eliminar registros',
+                                text: 'Hubo un problema al eliminar los registros. Intenta nuevamente.',
+                                confirmButtonColor: '#d33',
+                            });
+                        }
+                    } catch (error) {
+                        console.error('Error del servidor:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error del servidor',
+                            text: 'No se pudo conectar al servidor.',
+                            confirmButtonColor: '#d33',
+                        });
+                    }
+                }
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const enviarMensajesButton = document.getElementById('enviarMensajesTodos'); 
+        const cuerpoTabla = document.querySelector('tbody'); 
+
+        enviarMensajesButton.addEventListener('click', () => {
+            const rows = cuerpoTabla.querySelectorAll('tr'); 
+            const emails = []; 
+
+            rows.forEach(row => {
+                const emailCell = row.querySelector('td:nth-child(2)'); 
+                const email = emailCell?.textContent.trim();
+                if (email) {
+                    emails.push(email);
+                }
+            });
+
+            if (emails.length > 0) {
+                const mailtoLink = `mailto:${emails.join(',')}`;
+                window.location.href = mailtoLink; 
+            } else {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'No hay correos',
+                    text: 'No se encontraron correos registrados para enviar mensajes.',
+                    confirmButtonColor: '#3085d6',
+                });
+            }
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const cuerpoTabla = document.querySelector('tbody');
+
+        window.confirmDelete = async (id) => {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'Esta acción eliminará permanentemente el registro.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar',
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    try {
+                        const token = sessionStorage.getItem('token');
+                        const response = await fetch(`http://localhost:3000/clientes/${id}`, { 
+                            method: 'DELETE',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`,
+                            },
+                        });
+
+                        if (response.ok) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Registro eliminado',
+                                text: 'El registro ha sido eliminado correctamente.',
+                                confirmButtonColor: '#28a745',
+                            });
+
+                            const rowToDelete = cuerpoTabla.querySelector(`tr[data-id="${id}"]`);
+                            if (rowToDelete) {
+                                cuerpoTabla.removeChild(rowToDelete); 
+                            }
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error al eliminar registro',
+                                text: 'Hubo un problema al eliminar el registro.',
+                                confirmButtonColor: '#d33',
+                            });
+                        }
+                    } catch (error) {
+                        console.error('Error del servidor:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error del servidor',
+                            text: 'No se pudo conectar al servidor.',
+                            confirmButtonColor: '#d33',
+                        });
+                    }
+                }
+            });
+        };
+    });
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const totalClientesP = document.getElementById('PContador'); 
+
+        try {
+            const token = sessionStorage.getItem('token'); 
+            const response = await fetch('http://localhost:3000/clientes/count', { 
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json(); 
+                totalClientesP.textContent = `Total clientes: ${data.total}`; 
+            } else {
+                console.error('Error al obtener el total de clientes:', response.status);
+            }
+        } catch (error) {
+            console.error('Error al conectar con el servidor:', error);
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const editModal = document.getElementById('editModal'); 
+        const editEmailInput = document.getElementById('editEmailInput') as HTMLInputElement; 
+        const saveChangesButton = document.getElementById('saveChangesButton'); 
+        const cancelButton = document.getElementById('cancelButton'); 
+
+        let currentClientId = null; 
+
+        window.openModalEdit = (id) => {
+            currentClientId = id; 
+            editModal.classList.remove('hidden'); 
+        };
+
+        saveChangesButton.addEventListener('click', async () => {
+            const nuevoEmail = editEmailInput.value; 
+
+            if (!nuevoEmail || !nuevoEmail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Correo inválido',
+                    text: 'Por favor, ingresa un correo válido en el formato correcto.',
+                    confirmButtonColor: '#d33',
+                });
+                return;
+            }
+
+            try {
+                const token = sessionStorage.getItem('token');
+                const response = await fetch(`http://localhost:3000/clientes/${currentClientId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({ email: nuevoEmail }), 
+                });
+
+                if (response.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Correo actualizado',
+                        text: 'El correo ha sido actualizado correctamente.',
+                        confirmButtonColor: '#28a745',
+                    });
+
+                    editModal.classList.add('hidden'); 
+                    editEmailInput.value = ''; 
+
+                    const tableBody = document.querySelector('tbody');
+                    const rowToUpdate = tableBody.querySelector(`tr[data-id="${currentClientId}"]`);
+                    if (rowToUpdate) {
+                        const emailCell = rowToUpdate.querySelector('td:nth-child(2)');
+                        emailCell.textContent = nuevoEmail;
+                    }
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al actualizar',
+                        text: 'Hubo un problema al actualizar el correo.',
+                        confirmButtonColor: '#d33',
+                    });
+                }
+            } catch (error) {
+                console.error('Error del servidor:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error del servidor',
+                    text: 'No se pudo conectar al servidor.',
+                    confirmButtonColor: '#d33',
+                });
+            }
+        });
+
+        cancelButton.addEventListener('click', () => {
+            editModal.classList.add('hidden'); 
+            editEmailInput.value = ''; 
+        });
+    });
+
+</script>

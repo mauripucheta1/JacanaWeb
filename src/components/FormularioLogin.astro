@@ -107,14 +107,5 @@
             }
         });
     });
-    
-    document.getElementById("logoutButton")?.addEventListener("click", () => {
-        logout();
-    });
-
-    const logout = () => {
-      sessionStorage.removeItem("token"); 
-      window.location.href = "/login"; 
-    };
 
 </script>

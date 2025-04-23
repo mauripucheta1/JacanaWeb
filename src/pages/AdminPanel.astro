@@ -1,6 +1,5 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Panel from "../components/Panel.astro";
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +10,20 @@ import Footer from "../components/Footer.astro";
     <title>Jacana | Administración</title>
 </head>
 <body>
-    
+    <Panel/>
 </body>
 </html>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const token = sessionStorage.getItem('token');
+
+        if (!token) {
+            window.location.href = '/Login?redirected=AdminPanel';
+        } else {
+            console.log('Token válido: se puede acceder al panel.');
+        }
+    });
+
+</script>

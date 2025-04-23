@@ -3,11 +3,23 @@ const pool = require('../config/db');
 // Obtener todos los clientes
 const obtenerClientes = async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM clientes'); 
+        const result = await pool.query('SELECT * FROM clientes ORDER BY id'); 
         res.status(200).json(result.rows);
     } catch (error) {
         console.error('Error al obtener clientes:', error);
         res.status(500).send('Error al obtener la lista de clientes');
+    }
+};
+
+// Realizar un conteo de clientes
+const contarClientes = async (req, res) => {
+    try {
+        const result = await pool.query('SELECT COUNT(*) FROM clientes'); 
+        const count = result.rows[0].count; 
+        res.status(200).json({ total: count });
+    } catch (error) {
+        console.error('Error al contar clientes:', error);
+        res.status(500).send('Error al obtener el total de clientes.');
     }
 };
 
@@ -67,21 +79,22 @@ const actualizarCliente = async (req, res) => {
 
 // Eliminar un cliente por ID
 const eliminarCliente = async (req, res) => {
-    const { id } = req.body; 
-    try {
-        const result = await pool.query(
-            'DELETE FROM clientes WHERE id = $1 RETURNING *', [id]
-            
-        );
+    const { id } = req.params; // Obtener el ID desde los parámetros de la URL
 
+    if (!id) {
+        return res.status(400).send('ID requerido para eliminar el cliente.');
+    }
+
+    try {
+        const result = await pool.query('DELETE FROM clientes WHERE id = $1 RETURNING *', [id]);
         if (result.rowCount === 0) {
-            return res.status(404).send('Cliente no encontrado');
+            return res.status(404).send('Cliente no encontrado.');
         }
 
-        res.status(200).json(result.rows[0]); 
+        res.status(200).json(result.rows[0]);
     } catch (error) {
         console.error('Error al eliminar cliente:', error);
-        res.status(500).send('Error al eliminar el cliente');
+        res.status(500).send('Error al eliminar el cliente.');
     }
 };
 
@@ -105,4 +118,4 @@ const eliminarTodosLosClientes = async (req, res) => {
     }
 };
 
-module.exports = { obtenerClientes, obtenerClientePorId, agregarCliente, actualizarCliente, eliminarCliente, eliminarTodosLosClientes }; 
+module.exports = { obtenerClientes, contarClientes, obtenerClientePorId, agregarCliente, actualizarCliente, eliminarCliente, eliminarTodosLosClientes }; 
