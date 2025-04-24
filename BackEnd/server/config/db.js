@@ -12,6 +12,8 @@ const pool = new Pool({
   },
 });
 
+console.log(process.env.DB_HOST)
+
 const testDBConnection = async () => {
   try {
     const result = await pool.query('SELECT 1 + 1 AS result');
