@@ -13,4 +13,5 @@ router.put('/:id', verificarToken, actualizarCliente);
 router.delete('/:id', verificarToken, eliminarCliente);
 router.delete('/', verificarToken, eliminarTodosLosClientes);
 
+
 module.exports = router;
