@@ -9,6 +9,8 @@ const pool = new Pool({
     port: process.env.DB_PORT,
 });
 
+console.log('Variables de entorno:', process.env);
+
 const testDBConnection = async () => {
     try {
         const result = await pool.query('SELECT * FROM administradores');
