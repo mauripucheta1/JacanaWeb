@@ -16,6 +16,11 @@ app.use(cors({
     credentials: true, 
 }));
 
+// Ruta raíz
+app.get('/', (req, res) => {
+    res.send('Bienvenido al API de Jacana');
+});
+
 // Rutas
 app.use('/clientes', clientesRoutes); 
 app.use('/auth', authRoute)
