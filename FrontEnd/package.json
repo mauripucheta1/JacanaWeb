@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.2",
-    "astro": "^4.16.6",
     "bcryptjs": "^3.0.2",
     "jsonwebtoken": "^9.0.2",
     "sweetalert2": "^11.19.1",
     "tailwindcss": "^3.4.14"
+  },
+  "devDependencies": {
+    "astro": "^5.7.5"
   }
 }
