@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 // Configuración de CORS
 app.use(cors({
-    origin: ('https://tiendajacana.netlify.app', 'http://localhost:4321'),
+    origin: ['https://tiendajacana.netlify.app', 'http://localhost:4321'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'], 
     credentials: true, 
 }));
