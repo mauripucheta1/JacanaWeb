@@ -8,7 +8,7 @@ const login = async (req, res) => {
 
     try {
         
-        const result = await pool.query('SELECT id, email, contraseña AS password FROM administradores WHERE email = $1', [email]);
+        const result = await pool.query('SELECT id, password, email FROM administradores WHERE email = $1', [email]);
         console.log('Resultado de la consulta:', result.rows); 
 
         if (result.rowCount === 0) {
