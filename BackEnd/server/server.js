@@ -10,10 +10,21 @@ const app = express();
 app.use(bodyParser.json()); 
 
 // Configuración de CORS
+const allowedOrigins = [
+  'https://tiendajacana.netlify.app',
+  'http://localhost:4321'
+];
+
 app.use(cors({
-    origin: ['https://tiendajacana.netlify.app', 'http://localhost:4321'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-    credentials: true, 
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('No permitido por CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
 }));
 
 // Ruta raíz
