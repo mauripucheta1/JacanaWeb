@@ -1,0 +1,44 @@
+.slider {
+    display: flex;
+    overflow: hidden;
+    width: 100%; 
+}
+
+.slider img {
+    width: 100%;
+    flex-shrink: 0;
+    transition: transform 6s ease; 
+    animation: slide 15s infinite;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-100%); }
+    40% { transform: translateX(-200%); }
+    60% { transform: translateX(-300%); }
+    80% {transform: translateX(-400%); }
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .img-container, .img-container2 {
+        height: 200px; 
+        background-size: contain; 
+    }
+}
+
+.avb {
+    transition: transform 1s;
+}
+
+.avb:hover {
+    transform: scale(1.04);
+}
+
+.backgroundLugar {
+    background-image: url('/img/bg-we.jpg');
+}
+
+.sombraCaja {
+    box-shadow: 0px 0px 10px rgba(249, 115, 42, 0.8);
+}

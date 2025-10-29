@@ -1,5 +1,5 @@
 ---
-import Header from "../components/Header.astro";
+import Header from "../components/Header";
 import AboutSection from "../components/AboutSection.astro";
 import PiePagina from "../components/PiePagina.astro";
 import Footer from "../components/Footer.astro";
@@ -13,9 +13,9 @@ import Footer from "../components/Footer.astro";
     <title>Jacana | Sobre Nosotros</title>
 </head>
 <body>
-    <Header/>
-    <AboutSection/>
-    <PiePagina/>
-    <Footer/>
+    <Header client:load />
+    <AboutSection />
+    <PiePagina />
+    <Footer />
 </body>
 </html>

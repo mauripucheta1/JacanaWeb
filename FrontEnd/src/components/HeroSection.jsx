@@ -8,16 +8,16 @@ const HeroSection = () => {
 
             {/* Imagen móvil */}
             <img
-                src="/img/coleccion-5.jpeg"
+                src="/img/atletas-jacana-mobile.png"
                 alt="Hero vertical"
-                className="absolute w-full h-full object-cover object-top brightness-50 md:hidden"
+                className="absolute w-full h-full object-cover object-top md:hidden"
             />
 
             {/* Imagen desktop */}
             <img
-                src="/img/carro-2.jfif"
+                src="/img/prenda-jacana-desktop.png"
                 alt="Hero horizontal"
-                className="absolute w-full h-full object-cover object-top brightness-50 hidden md:block"
+                className="absolute w-full h-full object-cover object-center hidden md:block"
             />
 
             <p className="relative z-10 text-white font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-center">

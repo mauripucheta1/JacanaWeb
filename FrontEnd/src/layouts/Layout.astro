@@ -7,6 +7,9 @@ interface Props {
 const { title, description} = Astro.props;
 import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
+import HomeSection from '../components/HomeSection';
+import Cards from "../components/Cards";
+import Footer from '../components/Footer.astro';
 ---
 
 <!doctype html>
@@ -19,11 +22,14 @@ import HeroSection from '../components/HeroSection';
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="bg-black">
 		<slot />
 
 		<Header client:load />
 		<HeroSection client:load />
+		<HomeSection client:load />
+		<Cards client:load />
+		<Footer />
 
 	</body>
 </html>
