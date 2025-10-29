@@ -1,7 +1,7 @@
 ---
-import Header from "../components/Header.astro";
+import Header from "../components/Header";
 import FormularioLogin from "../components/FormularioLogin.astro";
-import Footer from "../components/Footer";
+import Footer from "../components/Footer.astro";
 ---
 
 <!DOCTYPE html>
@@ -13,9 +13,9 @@ import Footer from "../components/Footer";
     <title>Jacana | Login</title>
 </head>
 <body>
-    <Header/>
-    <FormularioLogin/>
-    <Footer/>
+    <Header client:load />
+    <FormularioLogin />
+    <Footer />
 </body>
 </html>
 

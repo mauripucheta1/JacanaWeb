@@ -1,76 +1,431 @@
 .slider {
-    display: flex;
-    overflow: hidden;
-    width: 100%; 
+  display: flex;
+  overflow: hidden;
+  width: 100%;
 }
 
 .slider img {
-    width: 100%;
-    flex-shrink: 0;
-    transition: transform 6s ease; 
-    animation: slide 15s infinite;
+  width: 100%;
+  flex-shrink: 0;
+  transition: transform 6s ease;
+  animation: slide 15s infinite;
 }
 
 @keyframes slide {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(-100%); }
-    40% { transform: translateX(-200%); }
-    60% { transform: translateX(-300%); }
-    80% {transform: translateX(-400%); }
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-100%);
+  }
+  40% {
+    transform: translateX(-200%);
+  }
+  60% {
+    transform: translateX(-300%);
+  }
+  80% {
+    transform: translateX(-400%);
+  }
 }
 
 /* Ajuste para móviles */
 @media (max-width: 768px) {
-    .img-container, .img-container2 {
-        height: 200px; 
-        background-size: contain; 
-    }
+  .img-container,
+  .img-container2 {
+    height: 200px;
+    background-size: contain;
+  }
 }
 
 .avb {
-    transition: transform 1s;
+  transition: transform 1s;
 }
 
 .avb:hover {
-    transform: scale(1.04);
+  transform: scale(1.04);
 }
 
 .backgroundLugar {
-    background-image: url('/img/bg-we.jpg');
+  background-image: url("/img/bg-we.jpg");
 }
 
 .sombraCaja {
-    box-shadow: 0px 0px 10px rgba(249, 115, 42, 0.8);
+  box-shadow: 0px 0px 10px rgba(249, 115, 42, 0.8);
 }
 
 .imagenesDesplegables {
-    width: 0px;
-    flex-grow: 1;
-    object-fit: cover;
-    transition: .8s ease;
+  width: 0px;
+  flex-grow: 1;
+  object-fit: cover;
+  transition: 0.8s ease;
 }
 
 .imagenesDesplegables:hover {
-    width: 650px;
-    height: 850px;
+  width: 650px;
+  height: 850px;
 }
 
 .sliderChiquito {
-    display: flex;
-    overflow: hidden;
-    width: 80%; 
+  display: flex;
+  overflow: hidden;
+  width: 80%;
 }
 
 .sliderChiquito img {
-    width: 100%;
-    flex-shrink: 0;
-    transition: transform 6s ease; 
-    animation: slide 15s infinite;
+  width: 100%;
+  flex-shrink: 0;
+  transition: transform 6s ease;
+  animation: slide 15s infinite;
 }
 
 @keyframes slide {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(-100%); }
-    40% { transform: translateX(-200%); }
-    60% { transform: translateX(-300%); }
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-100%);
+  }
+  40% {
+    transform: translateX(-200%);
+  }
+  60% {
+    transform: translateX(-300%);
+  }
+}
+
+.bgRemera1 {
+  width: 100%;
+  background: url("/img/Prendas/Remera-1.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgRemera1:hover {
+  background: url("/img/Prendas/Remera-1-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgRemera2 {
+  width: 100%;
+  background: url("/img/Prendas/Remera-2.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgRemera2:hover {
+  background: url("/img/Prendas/Remera-2-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgMusculosa1 {
+  width: 100%;
+  background: url("/img/Prendas/Musc-1.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgMusculosa1:hover {
+  background: url("/img/Prendas/Musc-1-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgMusculosa2 {
+  width: 100%;
+  background: url("/img/Prendas/Musc-2.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgMusculosa2:hover {
+  background: url("/img/Prendas/Musc-2-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgTop1 {
+  width: 100%;
+  background: url("/img/Prendas/Top-250.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgTop1:hover {
+  background: url("/img/Prendas/Top-250-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgTop2 {
+  width: 100%;
+  background: url("/img/Prendas/Top-Athene.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgTop2:hover {
+  background: url("/img/Prendas/Top-Athene-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgSosten1 {
+  width: 100%;
+  background: url("/img/Prendas/Sosten-250.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgSosten1:hover {
+  background: url("/img/Prendas/Sosten-250-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgSosten2 {
+  width: 100%;
+  background: url("/img/Prendas/Sosten-Falco.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgSosten2:hover {
+  background: url("/img/Prendas/Sosten-Falco-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgChaleco {
+  width: 100%;
+  background: url("/img/Prendas/Chaleco-250.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgChaleco:hover {
+  background: url("/img/Prendas/Chaleco-250-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgTopMangas {
+  width: 100%;
+  background: url("/img/Prendas/Top-Mangas.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgTopMangas:hover {
+  background: url("/img/Prendas/Top-Mangas-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgPrimeraPiel {
+  width: 100%;
+  background: url("/img/Prendas/Primera-Piel.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgPrimeraPiel:hover {
+  background: url("/img/Prendas/Primera-Piel-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgMangas {
+  width: 100%;
+  background: url("/img/Prendas/Mangas-250.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgMangas:hover {
+  background: url("/img/Prendas/Mangas-250-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgShort250 {
+  width: 100%;
+  background: url("/img/Prendas/Short-250.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgShort250:hover {
+  background: url("/img/Prendas/Short-250-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgShortFalco {
+  width: 100%;
+  background: url("/img/Prendas/Short-Falco.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgShortFalco:hover {
+  background: url("/img/Prendas/Short-Falco-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgCalza250 {
+  width: 100%;
+  background: url("/img/Prendas/Calza-250.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgCalza250:hover {
+  background: url("/img/Prendas/Calza-250-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgBombachudo {
+  width: 100%;
+  background: url("/img/Prendas/Bombachudo.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgBombachudo:hover {
+  background: url("/img/Prendas/Bombachudo-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgCalzaFalco {
+  width: 100%;
+  background: url("/img/Prendas/Calza-Larga.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgCalzaFalco:hover {
+  background: url("/img/Prendas/Calza-Larga-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgCalzaAthene {
+  width: 100%;
+  background: url("/img/Prendas/Calza-Athene.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgCalzaAthene:hover {
+  background: url("/img/Prendas/Calza-Athene-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgEntero {
+  width: 100%;
+  background: url("/img/Prendas/Entero.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgEntero:hover {
+  background: url("/img/Prendas/Entero-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgEnteroMG {
+  width: 100%;
+  background: url("/img/Prendas/Entero-Mangas.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgEnteroMG:hover {
+  background: url("/img/Prendas/Entero-Mangas-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgCamperaFalco {
+  width: 100%;
+  background: url("/img/Prendas/Campera.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgCamperaFalco:hover {
+  background: url("/img/Prendas/Campera-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgBuzoFalco {
+  width: 100%;
+  background: url("/img/Prendas/Buzo.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgBuzoFalco:hover {
+  background: url("/img/Prendas/Buzo-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgRompeviento {
+  width: 100%;
+  background: url("/img/Prendas/Rompeviento.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgRompeviento:hover {
+  background: url("/img/Prendas/Rompeviento-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgJogginPasser {
+  width: 100%;
+  background: url("/img/Prendas/Calza-Larga.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgJogginPasser:hover {
+  background: url("/img/Prendas/Joggin-Passer-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgRemRugbyPasser {
+  width: 100%;
+  background: url("/img/Prendas/Remera-Rugby.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgRemRugbyPasser:hover {
+  background: url("/img/Prendas/Remera-Rugby-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgShortRugby {
+  width: 100%;
+  background: url("/img/Prendas/Short-Rugby.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgShortRugby:hover {
+  background: url("/img/Prendas/Short-Rugby-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgMuscHockey {
+  width: 100%;
+  background: url("/img/Prendas/Musc-Hockey.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgMuscHockey:hover {
+  background: url("/img/Prendas/Musc-Hockey-Espalda.jpg");
+  background-size: cover;
+}
+
+.bgBasquet {
+  width: 100%;
+  background: url("/img/Prendas/Musc-Basquet.jpg");
+  background-size: cover;
+  transition: 0.7s ease;
+}
+
+.bgBasquet:hover {
+  background: url("/img/Prendas/Musc-Basquet-Espalda.jpg");
+  background-size: cover;
 }

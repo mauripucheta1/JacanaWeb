@@ -100,7 +100,7 @@ const CardsTimeline = () => {
                     <p className="text-2xl md:text-4xl uppercase">Conoce más sobre nuestra colección</p>
                 </div>
                     
-                <div class="w-full sm:w-1/3 md:w-1/3 h-auto flex justify-center items-center mt-4 md:mt-0">
+                <div className="w-full sm:w-1/3 md:w-1/3 h-auto flex justify-center items-center mt-4 md:mt-0">
                     <img src="/img/Logo-Coleccion.png" alt="Fondo Colección" className="w-26 h-20 md:w-60 md:h-32" />
                 </div>
                 

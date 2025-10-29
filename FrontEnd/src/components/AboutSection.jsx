@@ -120,11 +120,11 @@ const AboutSection = () => {
 
                 <div className="w-full max-w-screen-xl mx-auto mt-10 flex flex-wrap justify-center gap-4">
 
-                    <img src="/img/Equipo-4.jpeg" alt="fondoNosotros" class="brightness-50 imagenesDesplegables rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-cover" />
-                    <img src="/img/Equipo-5.jpeg" alt="fondoNosotross" class="brightness-50 imagenesDesplegables rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-cover" />  
-                    <img src="/img/Equipo-1.jpeg" alt="fondoNosotross" class="brightness-50 imagenesDesplegables rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-cover" />  
-                    <img src="/img/Equipo-2.jpeg" alt="fondoNosotross" class="brightness-50 imagenesDesplegables rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-cover" />  
-                    <img src="/img/Equipo-3.jpeg" alt="fondoNosotross" class="brightness-50 imagenesDesplegables rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-cover" /> 
+                    <img src="/img/Equipo-4.jpeg" alt="fondoNosotros" className="brightness-50 imagenesDesplegables rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-cover" />
+                    <img src="/img/Equipo-5.jpeg" alt="fondoNosotross" className="brightness-50 imagenesDesplegables rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-cover" />  
+                    <img src="/img/Equipo-1.jpeg" alt="fondoNosotross" className="brightness-50 imagenesDesplegables rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-cover" />  
+                    <img src="/img/Equipo-2.jpeg" alt="fondoNosotross" className="brightness-50 imagenesDesplegables rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-cover" />  
+                    <img src="/img/Equipo-3.jpeg" alt="fondoNosotross" className="brightness-50 imagenesDesplegables rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-cover" /> 
 
                 </div>
 

@@ -1,0 +1,126 @@
+import { motion } from "framer-motion";
+
+const ConditionSection = () => {
+
+    return (
+
+        <>
+        
+            <main className="relative w-full h-screen flex justify-center items-center">
+
+                <img src="/img/Contrato3.jpg" className="absolute w-full h-full object-cover brightness-50" />
+
+                <p className="relative z-10 text-white font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-center">
+                    Términos y <br />condiciones
+                </p>
+
+                {/* Scroll Mouse animado */}
+                <motion.div
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center cursor-pointer"
+                    animate={{ y: [0, 5, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                >
+                    <div className="w-6 h-10 border-2 border-white/70 rounded-full flex items-start justify-center p-1">
+                    <motion.div
+                        className="w-2 h-2 bg-white rounded-full"
+                        animate={{ y: [0, 6, 0] }}
+                        transition={{ repeat: Infinity, duration: 1 }}
+                    />
+                    </div>
+                </motion.div>
+
+            </main>
+
+            <section className="w-full h-auto flex justify-center items-center text-center px-10 lg:px-24 mt-20 text-gray-200">
+
+                <p className="text-lg text-justify"><span className="font-semibold">TÉRMINOS Y CONDICIONES:</span> Estos se aplicarán para la navegación del sitio de internet de JACANA INDUMENTARIA S.A.S. 
+                    (en adelante, el “website” cuando se refiera al sitio web de internet) y los servicios ofrecidos en él. La responsabilidad del mencionado “Website” y de los productos ofrecidos son de JACANA 
+                    INDUMENTARIA S.A.S. (CUIT 30716125780) con domicilio en General Cabrera 256 Ciudad de Jesús María, Provincia de Córdoba. <br /><br />Los derechos de uso del website, son propiedad de JACANA INDUMENTARIA 
+                    S.A.S.<br /><br /><span className="font-semibold">ACEPTACIÓN Y CONOCIMIENTO DE LOS TÉRMINOS Y CONDICIONES</span> Los presentes términos y condiciones tienen carácter obligatorio y vinculante. Se aplican a 
+                    todas las compras y actividades realizadas mediante el website. El uso del website implica el conocimiento y la aceptación de ellos. Si usted no está de acuerdo con los términos y condiciones, 
+                    deberá abstenerse de utilizar el website y/o los servicios por él ofrecidos. Por “usuario” del website se entiende tanto a los registrados como a los visitantes.<br /><span className="font-semibold">
+                    Capacidad</span> Los Servicios sólo están disponibles para personas que tengan capacidad legal para contratar. No podrán utilizar los servicios las personas que no tengan esa capacidad, los menores 
+                    de edad o Usuarios de JACANA que hayan sido suspendidos temporalmente o inhabilitados definitivamente. Si estás registrando un Usuario como Empresa, debes tener capacidad para contratar a nombre 
+                    de tal entidad y de obligar a la misma en los términos de este Acuerdo.<br /><br /><span className="font-semibold uppercase">Interrupción del servicio, exclusión de responsabilidad</span> JACANA INDUMENTARIA
+                    S.A.S se reserva el derecho de interrumpir, suspender o modificar en cualquier momento los servicios ofrecidos en el presente website, ya sea en forma permanente o transitoria. No se requerirá la 
+                    conformidad de los usuarios, ni será necesario aviso previo alguno. Asimismo, no garantiza el acceso o uso permanente del website, ya que éste podría interrumpirse por cuestiones técnicas 
+                    ajenas a JACANA S.A.S .<br />No obstante lo mencionado anteriormente, si la suspensión o interrupción mencionada no obedeciere a razones de fuerza mayor o caso fortuito, JACANA INDUMENTARIA S.A.S . 
+                    se compromete a cumplir las prestaciones que estuvieran pendientes al momento de la suspensión o interrupción.<br /> JACANA S.A.S . no garantiza que el website se encuentre libre de virus o cualquier 
+                    otro elemento que pueda llegar a dañar o alterar el normal funcionamiento de un ordenador. Es responsabilidad y obligación exclusiva del usuario contar con las herramientas adecuadas para detectar, 
+                    desinfectar y/o prevenir cualquier tipo de elementos y/o posibles daños de esta naturaleza.<br /> JACANA S.A.S no se responsabiliza por cualquier daño que pueda producirse en los equipos informáticos 
+                    de los usuarios o de terceros como consecuencia de la navegación del presente website.<br /><br /><span className="font-semibold uppercase">Pedidos personalizados:</span><br />Una vez que el cliente haya 
+                    verificado y aceptado en todos sus términos (diseño y cantidad de prendas) su pedido por escrito, mediante solicitud de cotización, correo electrónico o herramientas de mensajería móvil disponible 
+                    se considerara “Confirmado”.<br />Confirmado el pedido, queda formalizada de manera definitiva la operación contractual entre el usuario cliente y la empresa y estos términos serán vinculantes entre 
+                    las partes.<br /> La información sobre productos y precios publicados en la página está sujeta a cambios y pueden ser modificados y/o actualizados directamente por JACANA S.A.S.- 
+                    Cualquier precio o condición de los productos que ya haya sido confirmado en una operación no serán modificados.<br /><br /><span className="uppercase font-semibold">Devoluciones:</span> Productos de stock: 
+                    (Dígase “no personalizados”) El producto debe estar nuevo, sin uso, en su caja o envoltorio original con sus etiquetas o calcomanías sin haber sido sustraídas. El cargo de envió por retorno del 
+                    producto será a cargo del comprador. El cargo del envio por el nuevo producto será a cargo de la empresa.<br /><br /><span className="uppercase font-semibold">Productos personalizados:</span> El único 
+                    motivo por el cual la empresa responderá será por fallas en la confección de fábrica o problemas de sublimación no asociados con el color. La empresa podrá devolver el dinero de la prenda o 
+                    realizarla nuevamente según sea conveniente para la misma.<br /><br /><span className="uppercase font-semibold">Producción:</span><br /><span className="uppercase font-semibold">Tiempos de producción:</span><br />
+                    <span className="uppercase font-semibold">Productos personalizados:</span> La empresa tiene plazo de entrega que rondan entre los 20 y 90 días para la entrega o envió del producto según la temporada 
+                    desde que se encuentre confirmada la compra. Pasado dicho plazo, la empresa se compromete a la devolución del dinero si el cliente así lo requiriera.<br /><span className="uppercase font-semibold">
+                    Productos de stock:</span> Los productos de stock serán enviados/entregados al cliente dentro de los 5 días hábiles luego de realizada la compra.<br /><br /><span className="uppercase font-semibold">Intereses por 
+                    mora</span> Una vez finalizado el proceso de producción y siendo advertido el cliente de la disponibilidad de su pedido para ser despachado el mismo tendrá un tiempo máximo de 10 días de corrido 
+                    para saldar cualquier deuda que corresponda al mismo. Finalizado dicho plazo se aplicará intereses por mora al monto adeudado equivalentes al IPC mensual argentino siendo calculado desde el día 
+                    del aviso hasta el momento que el cliente se disponga a saldar la deuda. <br /><br /><span class="uppercase font-semibold">Devolución en dinero</span> Para los casos de devolución vía depósito bancario, 
+                    la cuenta bancaria deberá estar a nombre del titular de la cuenta de usuario desde donde se haya realizado la operación. En caso de que no coincidan las titularidades, se requerirá la expresa 
+                    autorización del titular de la cuenta de usuario como condición indispensable previa al depósito.<br /><br /><span className="uppercase font-semibold">Trabajando con el diseñador.</span> El servicio de 
+                    diseño que Jacana brinda actualmente cuenta con 1 diseño y hasta 3 modificaciones. Este será gratuito cuando la cantidad mínima de prendas solicitada sea de 20 unidades. Para acceder, el usuario 
+                    deberá abonar un depósito en garantía de $3000 pesos argentinos que será descontado sobre el pedido total (En caso de superar 20 unidades del mismo modelo). Si el usuario queda insatisfecho con el 
+                    diseño y/o modificaciones realizadas podrá acceder nuevamente al servicio por $15.000 pesos argentinos con las mismas condiciones, pero fuera del servicio de gratuidad.<br /><br /><span className="uppercase
+                    font-semibold">Control de diseño a cargo exclusivo del usuario cliente:</span> Los diseños deben ser minuciosamente controlados por el cliente, y están bajo su exclusiva responsabilidad, por lo 
+                    tanto, la Empresa resulta ajena y no asume obligación ni responsabilidad alguna.<br /><br /><span className="uppercase font-semibold">Colores:</span> Jacana se esforzará por realizar la prenda lo más 
+                    similar posible a la representación gráfica, sin embargo, no podemos garantizar los mismos tonos que se visualiza en la pantalla debido a la variación que hay entre las mismas y lo subjetivo del 
+                    proceso.<br /><br /><span className="uppercase font-semibold">Selección de artículos (talla, composición, tipo, etc.)</span> JACANA S.A.S. no se responsabiliza por el uso incorrecto o destino que pueda 
+                    hacerse de sus artículos mediante los cuales pudieran causar trastornos a usuarios de los mismos o de terceros, como así también los perjuicios devenidos por dichas causas JACANA S.A.S. tampoco se 
+                    responsabiliza de la incorrecta selección realizada por el usuario ya sea de talla o tipo de artículo, la cual es una atribución del propio usuario. JACANA S.A.S. se reserva el derecho de modificar 
+                    el presente aviso legal cuando así lo estime oportuno y respetando en todo caso la normativa aplicable.<br /><br /><span className="uppercase font-semibold">Envíos y control de productos:</span><br /><span 
+                    className="font-semibold uppercase">Tiempos de entrega:</span> La mercancía será despachada al servicio postal correspondiente una vez saldada cualquier deuda que posea el cliente con la empresa. El 
+                    domicilio de recepción debe ser otorgado por el cliente, Jacana no se hará responsable por ausencia del cliente en el momento de la entrega. En caso de entrega fallida Jacana se compromete a 
+                    reenviar la mercancía nuevamente una vez saldado los costos del envío no recibido.<br />Jacana se compromete a realizar el traslado de los paquetes con la debida diligencia y cuidado, de acuerdo con 
+                    los estándares establecidos en la industria. Sin embargo, Jacana no se responsabiliza por daños o pérdidas que puedan surgir durante el proceso de envío, incluyendo, pero no limitado a:<br />Retrasos 
+                    en la entrega: Jacana hará todo lo posible para entregar los paquetes en el plazo estimado. Sin embargo, no se garantiza que la empresa de transporte acordada con el cliente entregue el producto en 
+                    la fecha exacta, ya que el proceso de envío puede verse afectado por factores externos como condiciones climáticas, tráfico, huelgas, etc.Daños en la mercancía: Jacana no se responsabiliza por daños 
+                    que puedan sufrir los paquetes durante el traslado, como roturas, suciedad, perdida de contenido, etc.<br />Perdida total del paquete: Jacana no se responsabilizará por la pérdida total del paquete 
+                    producido por el transporte.<br /><br /><span className="uppercase font-semibold">Es responsabilidad del cliente:</span> Verificar que la mercancía recibida en la recepción pese exactamente igual que el 
+                    peso declarado de envío.<br /> Inspeccionar el paquete antes de recibirlo: El cliente debe inspeccionar el paquete antes de recibirlo delante del servicio postal. Debe asegurarse que las cintas de 
+                    embalaje correspondan en su totalidad a Jacana, caso contrario, no recibir el paquete y realizar reclamo al servicio de correspondencia. La empresa tiene a disposición del cliente material 
+                    videográfico para constatar que todo su pedido haya sido almacenado y embalado de forma correspondiente.<br /><br /><span className="uppercase font-semibold">Derechos de autor/derechos de terceros.</span> 
+                    Jacana desestimara cualquier intento de imitación de productos de otras empresas o de si misma. El cliente responderá a cualquier situación jurídica que afecte a la empresa en caso de la imitación 
+                    inadvertida por la misma de un producto de otra empresa de indumentaria. Asimismo, tampoco utilizaremos logos/isologos de otras empresas de indumentaria en nuestros productos. Diseños que contengan 
+                    imágenes pornográficas, que afecten el honor de las personas, que inciten a la violencia o afecten la privacidad de terceros no serán producidos por Jacana, teniendo nuestra empresa el deber de 
+                    denunciar cualquier irregularidad que perciba en los diseños producidos o solicitados por el cliente.<br /><br /><span className="uppercase font-semibold">Etiquetados, promociones y derechos de la 
+                    empresa.</span> En términos generales y a menos que haya un acuerdo de partes, el logo de Jacana se visualizara en todas las prendas al frente, en el pectoral derecho. Jacana tiene derecho a 
+                    presentar todos los productos que genere en su página web, catálogos, banners u otras formas de presentaciones. Jacana puede mencionar al cliente en diferentes medios de comunicación como referencia.
+                    Esto también incluye la mención de cualquier nombre o logotipo protegido. Jacana no estará obligada a mencionar al cliente. El cliente podrá solicitar especialmente y por escrito no ser nombrado por 
+                    la empresa en sus medios de comunicación. En caso de fallas en la producción o sobreproducción, Jacana se reserva el derecho de utilizar dichas prendas para donación, promoción o muestreo a 
+                    disposición de otros clientes.<br /><br /><span className="font-semibold uppercase">Disponibilidad y precio de los productos ofrecidos</span> Antes de comprar, el usuario deberá tener en cuenta que los 
+                    productos pueden no encontrarse en stock al momento de seleccionarlos. Toda compra se encuentra sujeta a disponibilidad y la misma se confirmará ante el procesamiento final del pedido. Asimismo, en 
+                    el improbable caso de que el o los productos seleccionados se encontraren agotados o demorados, JACANA INDUMENTARIA S.A.S. se comunicará con el usuario y lo invitará a que elija una de las 
+                    siguientes opciones:<br />1) Continuar esperando la entrega del producto elegido (en caso de demora)<br />2) Cancelación de la compra y devolución del importe por el medio de pago original<br />3) Optar 
+                    por un producto alternativo que le ofrezca JACANA INDUMENTARIA S.A.S. para el caso particular<br />4) Cancelación de la compra y emisión de una orden de compra por el mismo importe.<br />5) Cuando el 
+                    usuario opte por cancelar la compra, se devolverá el importe abonado según el medio de pago que se haya elegido oportunamente.<br />En el caso de que el usuario opte por el producto alternativo que 
+                    le ofrece JACANA INDUMENTARIA S.A.S., deberá procederse al pago de la diferencia en el caso de sumas mayores o, en su defecto se le realizará la correspondiente devolución de la misma.<br />
+                    Importante: para las situaciones contempladas en este apartado, el usuario tendrá un plazo de diez días para elegir una de las opciones mencionadas. En caso de que el usuario guarde silencio al 
+                    respecto, JACANA INDUMENTARIA S.A.S. podrá presumir que ha optado por la cancelación de la compra, y procederá a la devolución del importe abonado por el medio de pago original.<br />La información 
+                    sobre productos y precios publicados en la página está sujeta a cambios y pueden ser modificados y/o actualizados directamente por JACANA INDUMENTARIA S.A.S. Cualquier precio o condición de los 
+                    productos que ya haya sido confirmado en una operación no serán modificados.<br /><br /><span className="uppercase font-semibold">Validez de las promociones</span> En el caso de que se realicen ofertas y 
+                    promociones de productos, éstas tendrán validez para las compras efectuadas desde la fecha de comienzo de las mismas, hasta la de finalización de la oferta. Los términos y condiciones serán 
+                    comunicados en el website, y estarán siempre sujetas a la existencia en stock de los productos ofrecidos.<br />Razón social y domicilio La razón social de la empresa es JACANA INDUMENTARIA S.A.S., 
+                    con domicilio en calle General Cabrera 256, Ciudad de Jesús María, Provincia de Córdoba, Argentina.<br />Notificaciones Todas las notificaciones y/o comunicaciones que deban efectuarse por el uso de 
+                    website bajo estos términos y condiciones generales, deberán realizarse por escrito: (i) al usuario: mediante correo electrónico, a la cuenta de correo consignada por éste, o por carta documento, 
+                    al domicilio declarado; (ii) a JACANA INDUMENTARIA S.A.S.: a la cuenta de correo electrónico jacana@vestimosatletas.com o a su domicilio legal indicado en el punto anterior.<br /><br /><span className="
+                    uppercase font-semibold">Jurisdicción y ley aplicable</span> Los presentes términos y condiciones se encuentran regidos sin excepción y en todos sus puntos por las leyes de la República Argentina 
+                    y serán interpretados de acuerdo a ellas. Ante cualquier diferencia, desacuerdo o conflicto derivado de la interpretación, validez, alcance y/o aplicación de los presentes términos y 
+                    condiciones generales, los usuarios se comunicarán con JACANA INDUMENTARIA S.A.S. de manera fehaciente, haciéndole llegar su reclamo, a fin de que las partes procuren un acuerdo
+                </p>
+
+            </section>
+
+        </>
+
+    )
+
+}
+
+export default ConditionSection;

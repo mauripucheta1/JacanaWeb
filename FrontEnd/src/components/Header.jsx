@@ -23,31 +23,34 @@ const Header = () => {
 
     return (
 
-        <header className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 py-7 px-4 ${ scrolled ? "bg-black/80 backdrop-blur-md shadow-lg" : "bg-transparent"}`}>
+        <>
+            <header className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 py-7 px-4 ${ scrolled ? "bg-black/80 backdrop-blur-md shadow-lg" : "bg-transparent"}`}>
 
-            <div className="flex items-center justify-between px-4 md:px-8 py-3">
+                <div className="flex items-center justify-between px-4 md:px-8 py-3">
 
-                {/* Home */}
-                <a href="/" className="text-white text-2xl font-bold">Jacana</a>
+                    {/* Home */}
+                    <a href="/" className="text-white text-2xl font-bold">Jacana</a>
 
-                {/* Mobile */}
-                <button className="md:hidden text-white" onClick={toggleMenu} aria-label="Abrir menú">
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
+                    {/* Mobile */}
+                    <button className="md:hidden text-white" onClick={toggleMenu} aria-label="Abrir menú">
+                        {isOpen ? <X size={28} /> : <Menu size={28} />}
+                    </button>
 
-                {/* Desktop */}
-                <nav className="hidden md:flex gap-10 text-white font-semibold text-xl">
-                    {links.map((link) => (
-                        <a key={link.href} href={link.href} className="relative group">
-                            {link.name}
-                            <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                    ))}
-                </nav>
+                    {/* Desktop */}
+                    <nav className="hidden md:flex gap-10 text-white font-semibold text-xl">
+                        {links.map((link) => (
+                            <a key={link.href} href={link.href} className="relative group">
+                                {link.name}
+                                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                        ))}
+                    </nav>
 
-            </div>
-
-            <div className={`fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${ 
+                </div>
+                
+            </header>
+        
+            <div className={`fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300 z-30 ${ 
                 isOpen 
                     ? "opacity-100 pointer-events-auto" 
                     : "opacity-0 pointer-events-none"
@@ -55,9 +58,9 @@ const Header = () => {
                 onClick={toggleMenu}
             ></div>
 
-            <aside className={`fixed top-0 right-0 h-full w-3/4 sm:w-1/2 md:hidden bg-black text-white transform transition-transform duration-300 ease-in-out ${
+            <aside className={`fixed top-0 right-0 h-full w-3/4 sm:w-1/2 md:hidden bg-black text-white transform transition-transform duration-300 ease-in-out z-30 ${
                 isOpen 
-                    ? "translate-x-0" 
+                    ? "translate-x-0 h-full" 
                     : "translate-x-full"
                 }`}
             >
@@ -108,8 +111,8 @@ const Header = () => {
                 </div>
 
             </aside>
-            
-        </header>
+
+        </>
 
     )
 
