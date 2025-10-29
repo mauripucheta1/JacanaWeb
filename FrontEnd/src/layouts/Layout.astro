@@ -5,6 +5,8 @@ interface Props {
 }
 
 const { title, description} = Astro.props;
+import Header from '../components/Header';
+import HeroSection from '../components/HeroSection.astro';
 ---
 
 <!doctype html>
@@ -19,5 +21,9 @@ const { title, description} = Astro.props;
 	</head>
 	<body>
 		<slot />
+
+		<Header client:load />
+		<HeroSection />
+
 	</body>
 </html>
