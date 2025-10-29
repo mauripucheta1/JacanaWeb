@@ -429,3 +429,7 @@
   background: url("/img/Prendas/Musc-Basquet-Espalda.jpg");
   background-size: cover;
 }
+
+.borderCada {
+  border: 2px solid black;
+}

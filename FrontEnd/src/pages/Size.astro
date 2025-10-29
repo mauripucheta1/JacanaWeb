@@ -1,7 +1,7 @@
 ---
 import Header from "../components/Header";
-import SizeSection from "../components/SizeSection.astro";
-import PiePagina from "../components/PiePagina.astro";
+import SizeSection from "../components/SizeSection";
+import PiePaginaBlanco from "../components/PiePaginaBlanco.astro";
 import Footer from "../components/Footer.astro";
 ---
 
@@ -13,10 +13,10 @@ import Footer from "../components/Footer.astro";
     <link rel="icon" type="img/svg" href="/img/jacana-bg.png">
     <title>Jacana | Talles</title>
 </head>
-<body class="bg-black">
+<body class="bg-white">
     <Header client:load />
-    <SizeSection />
-    <PiePagina />
+    <SizeSection client:load />
+    <PiePaginaBlanco />
     <Footer />
 </body>
 </html>

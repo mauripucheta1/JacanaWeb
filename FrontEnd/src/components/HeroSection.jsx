@@ -21,7 +21,7 @@ const HeroSection = () => {
             />
 
             <p className="relative z-10 text-white font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-center">
-                Por atletas, <br></br>para atletas
+                Por atletas, <br/>para atletas
             </p>
 
             {/* Scroll Mouse animado */}
