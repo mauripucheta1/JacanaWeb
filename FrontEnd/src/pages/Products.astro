@@ -1,6 +1,6 @@
 ---
 import Header from "../components/Header";
-import ProductSection from "../components/ProductSection.astro";
+import ProductSection from "../components/ProductSection";
 import PiePagina from "../components/PiePagina.astro";
 import Footer from "../components/Footer.astro";
 ---
@@ -15,7 +15,7 @@ import Footer from "../components/Footer.astro";
 </head>
 <body class="bg-black">
     <Header client:load />
-    <ProductSection />
+    <ProductSection client:load />
     <PiePagina />
     <Footer />
 </body>
